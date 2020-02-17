@@ -14,7 +14,7 @@ public class DatabaseWorker {
     private static DatabaseWorker instance;
     private static final Logger log = Logger.getLogger(DatabaseWorker.class);
     private Connection connection;
-    private String url = "jdbc:mysql://localhost:3306/motorpoll?serverTimezone=UTC";
+    private String url = "jdbc:mysql://localhost:3306/airlines?serverTimezone=UTC";
     private String username = "root";
     private String password = "qwerty";
 
