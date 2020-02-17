@@ -1,5 +1,7 @@
 package com.airlines.app.servlets;
 
+import com.airlines.app.database.DatabaseWorker;
+import com.airlines.app.entities.User;
 import com.airlines.app.helpers.EmailValidator;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Signup extends HttpServlet {
 
@@ -39,7 +42,14 @@ public class Signup extends HttpServlet {
                             if (!mail.equals("")){
                                 if(validator.validate(mail)){
                                    log.info("mail is valid");
-                             }
+                                    try {
+                                        User user = new User(login,password,name,surname,mail);
+                                        DatabaseWorker databaseWorker = DatabaseWorker.getInstance();
+                                        databaseWorker.addUser(user);
+                                    } catch (SQLException e) {
+                                        log.error(e);
+                                    }
+                                }
                             }else {
                                 req.setAttribute("error", "Введите почту");
                             }

@@ -1,5 +1,6 @@
 package com.airlines.app.database;
 
+import com.airlines.app.entities.User;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
@@ -48,5 +49,26 @@ public class DatabaseWorker {
             instance = new DatabaseWorker();
         }
         return instance;
+    }
+
+    /**
+     * Метод для добавления юзера в БД;
+     * Используется при регистрации
+     * @param user
+     */
+    public void addUser(User user){
+        log.info("Creating a user");
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement("insert into user (Login, Password, Name, Surname, Mail) values(?,?,?,?,?)");
+            preparedStatement.setString(1,user.getLogin());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getName());
+            preparedStatement.setString(4, user.getSurname());
+            preparedStatement.setString(5, user.getMail());
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            log.error(e);
+        }
     }
 }
