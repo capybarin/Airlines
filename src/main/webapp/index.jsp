@@ -21,7 +21,7 @@
 </div>
 <div class="wall">
     <div class="wall_1">
-        <button class="btn_st w3-btn w3-hover-green w3-round-large" onclick="location.href='/add'">Регистрация</button>
+        <button class="btn_st w3-btn w3-hover-green w3-round-large" onclick="location.href='/signup'">Регистрация</button>
         <button class="btn_st w3-btn w3-hover-green w3-round-large" onclick="location.href='/login'">Вход</button>
     </div>
 </div>

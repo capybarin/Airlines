@@ -1,4 +1,4 @@
-package com.airlines.app.helpes;
+package com.airlines.app.helpers;
 
 import org.junit.Assert;
 import org.testng.annotations.BeforeClass;

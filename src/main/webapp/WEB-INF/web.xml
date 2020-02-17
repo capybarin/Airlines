@@ -14,26 +14,14 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-    
 
+    <servlet>
+        <servlet-name>signup</servlet-name>
+        <servlet-class>com.airlines.app.servlets.Signup</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>signup</servlet-name>
+        <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
 
-    <filter>
-        <filter-name>RequestEncodingFilter</filter-name>
-        <filter-class>com.airlines.app.filters.RequestCharacterEncoding</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>RequestEncodingFilter</filter-name>
-        <url-pattern>/</url-pattern>
-    </filter-mapping>
-
-
-    <filter>
-        <filter-name>EncodingResponseFilter</filter-name>
-        <filter-class>com.airlines.app.filters.ResponseCharacterEncoding</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>EncodingResponseFilter</filter-name>
-        <url-pattern>/</url-pattern>
-    </filter-mapping>
 </web-app>

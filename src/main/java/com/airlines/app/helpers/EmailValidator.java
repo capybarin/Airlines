@@ -1,4 +1,4 @@
-package com.airlines.app.helpes;
+package com.airlines.app.helpers;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
