@@ -20,6 +20,11 @@
     <div class="w3-container w3-center w3-green">
         <h2>Вход</h2>
     </div>
+    <%
+        if(request.getAttribute("error") != null){
+            out.println(request.getAttribute("error"));
+        }
+    %>
     <form method="post" class="w3-selection w3-light-grey w3-padding">
         <label>Логин:
             <input type="text" name="name" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />

@@ -71,4 +71,18 @@ public class DatabaseWorker {
             log.error(e);
         }
     }
+
+    public int loginUser(String userLogin, String userPass){
+        int userId = -1;
+        String sql = "SELECT idUser FROM user WHERE Login = " + "'" + userLogin + "'" + " AND Password = " + "'" + userPass + "'";
+        try{
+            ResultSet id = connection.createStatement().executeQuery(sql);
+            while (id.next()){
+                userId = id.getInt("idUser");
+            }
+        }catch (SQLException e) {
+            log.info(e);
+        }
+        return userId;
+    }
 }

@@ -10,19 +10,9 @@ public class Plane {
     private String from;
     private String to;
     private int price;
+    private String date;
 
-    public Plane(String name, String type, String company, int seats, String busy, String from, String to, int price) {
-        this.name = name;
-        this.type = type;
-        this.company = company;
-        this.seats = seats;
-        this.busy = busy;
-        this.from = from;
-        this.to = to;
-        this.price = price;
-    }
-
-    public Plane(String id, String name, String type, String company, int seats, String busy, String from, String to, int price) {
+    public Plane(String id, String name, String type, String company, int seats, String busy, String from, String to, int price, String date) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -32,6 +22,23 @@ public class Plane {
         this.from = from;
         this.to = to;
         this.price = price;
+        this.date = date;
+    }
+
+    public Plane(String name, String type, String company, int seats, String busy, String from, String to, int price, String date) {
+        this.name = name;
+        this.type = type;
+        this.company = company;
+        this.seats = seats;
+        this.busy = busy;
+        this.from = from;
+        this.to = to;
+        this.price = price;
+        this.date = date;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -98,8 +105,12 @@ public class Plane {
         this.price = price;
     }
 
-    public String getId() {
-        return id;
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
@@ -114,6 +125,7 @@ public class Plane {
                 ", from='" + from + '\'' +
                 ", to='" + to + '\'' +
                 ", price=" + price +
+                ", date='" + date + '\'' +
                 '}';
     }
 }
