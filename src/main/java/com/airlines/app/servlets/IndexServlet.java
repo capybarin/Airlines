@@ -21,9 +21,9 @@ public class IndexServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        BasicConfigurator.configure();
         req.setCharacterEncoding("UTF-8");
         DatabaseWorker databaseWorker = null;
-        log.info("Внутри индекса");
         try {
             databaseWorker = DatabaseWorker.getInstance();
         } catch (SQLException e) {
@@ -31,7 +31,6 @@ public class IndexServlet extends HttpServlet {
         }
         List<Plane> planes = null;
         planes = databaseWorker.getPlaneList();
-        log.info(planes);
         req.setAttribute("planes", planes);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
         requestDispatcher.forward(req, resp);
@@ -41,9 +40,8 @@ public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BasicConfigurator.configure();
         req.setCharacterEncoding("UTF-8");
-        //String planeId = req.getParameter("id");
-        //log.info(planeId);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
-        requestDispatcher.forward(req, resp);
+        String planeId = req.getParameter("id");
+        log.info(planeId);
+        doGet(req,resp);
     }
 }
