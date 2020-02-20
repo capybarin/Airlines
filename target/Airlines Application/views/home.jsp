@@ -1,4 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: vlad
+  Date: 20.02.2020
+  Time: 13:39
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page language="java" contentType="text/html; charset=Cp1251" pageEncoding="Cp1251"%>
 <html>
 <head>
@@ -21,9 +28,6 @@
 <div class="w3-container w3-blue-grey w3-opacity w3-right-align">
     <h1>Airlines application</h1>
 </div>
-<c:forEach items="${planes}" var="plane">
-    <h5>Имя: ${plane.name}</h5>
-</c:forEach>
 <div class="wall">
     <div class="wall_1">
         <button class="btn_st w3-btn w3-hover-green w3-round-large" onclick="location.href='/signup'">Регистрация</button>
