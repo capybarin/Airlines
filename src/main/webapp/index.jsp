@@ -1,3 +1,6 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.airlines.app.entities.Plane" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=Cp1251" pageEncoding="Cp1251"%>
 <head>
     <meta charset="utf-8">

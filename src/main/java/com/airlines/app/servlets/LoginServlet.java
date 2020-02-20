@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class Login extends HttpServlet {
-    private static final Logger log = Logger.getLogger(Login.class);
+public class LoginServlet extends HttpServlet {
+    private static final Logger log = Logger.getLogger(LoginServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,16 +29,13 @@ public class Login extends HttpServlet {
         BasicConfigurator.configure();
         String name = req.getParameter("name");
         String pass = req.getParameter("pass");
-        /*if (pass.equals("1") && name.equals("vlad")){
-            HttpSession session = req.getSession();
-            session.setAttribute("currOnline", name);
-        }*/
-        log.info("Начинаю заход");
         try {
             DatabaseWorker databaseWorker = DatabaseWorker.getInstance();
-            log.info("Проверка");
             if(databaseWorker.loginUser(name, pass)>0){
-                log.info(databaseWorker.loginUser(name, pass));
+                HttpSession session = req.getSession();
+                session.setAttribute("currOnline", databaseWorker.loginUser(name, pass));
+                //resp.sendRedirect("/afterLoginTest");
+                //return;
             } else {
                 req.setAttribute("error", "Логин или пароль введен не правильно");
             }

@@ -1,7 +1,7 @@
 package com.airlines.app.entities;
 
 public class User {
-    private String id;
+    private int id;
     private String login;
     private String password;
     private String name;
@@ -16,7 +16,7 @@ public class User {
         this.mail = mail;
     }
 
-    public User(String id, String login, String password, String name, String surname, String mail) {
+    public User(int id, String login, String password, String name, String surname, String mail) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -65,7 +65,7 @@ public class User {
         this.mail = mail;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

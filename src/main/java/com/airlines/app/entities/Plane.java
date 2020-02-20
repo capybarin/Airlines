@@ -1,7 +1,7 @@
 package com.airlines.app.entities;
 
 public class Plane {
-    private String id;
+    private int id;
     private String name;
     private String type;
     private String company;
@@ -12,7 +12,7 @@ public class Plane {
     private int price;
     private String date;
 
-    public Plane(String id, String name, String type, String company, int seats, String busy, String from, String to, int price, String date) {
+    public Plane(int id, String name, String type, String company, int seats, String busy, String from, String to, int price, String date) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -37,9 +37,7 @@ public class Plane {
         this.date = date;
     }
 
-    public String getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public String getName() {
         return name;
@@ -85,9 +83,7 @@ public class Plane {
         return from;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
-    }
+    public void setFrom(String from) { this.from = from; }
 
     public String getTo() {
         return to;

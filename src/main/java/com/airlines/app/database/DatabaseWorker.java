@@ -1,10 +1,12 @@
 package com.airlines.app.database;
 
+import com.airlines.app.entities.Plane;
 import com.airlines.app.entities.User;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Singleton класс для работы с БД
@@ -84,5 +86,21 @@ public class DatabaseWorker {
             log.info(e);
         }
         return userId;
+    }
+
+    public ArrayList<Plane> getPlaneList(){
+        ArrayList<Plane> planes = new ArrayList<>();
+        try {
+            ResultSet planeSet = connection.createStatement().executeQuery("SELECT * FROM plane");
+            while (planeSet.next()){
+                planes.add(new Plane(planeSet.getInt(1), planeSet.getString(2),planeSet.getString(3),
+                        planeSet.getString(4),planeSet.getInt(5),planeSet.getString(6),
+                        planeSet.getString(7),planeSet.getString(8),planeSet.getInt(9),
+                        planeSet.getString(10)));
+            }
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return planes;
     }
 }
