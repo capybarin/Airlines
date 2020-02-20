@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 if (session.getAttribute("currOnline") == null)
         {
             ServletContext servletContext = getServletContext();
-            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/views/error.jsp");
+            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/errors/notLoggedError.jsp");
             requestDispatcher.forward(req, resp);
         } else{
             writer.println("hello "+session.getAttribute("currOnline"));

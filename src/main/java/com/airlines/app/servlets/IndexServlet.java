@@ -6,13 +6,14 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class IndexServlet extends HttpServlet {
@@ -42,6 +43,14 @@ public class IndexServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String planeId = req.getParameter("id");
         log.info(planeId);
+        HttpSession session = req.getSession();
+        if (session.getAttribute("currOnline") == null)
+        {
+            ServletContext servletContext = getServletContext();
+            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/errors/notLoggedError.jsp");
+            requestDispatcher.forward(req, resp);
+            return;
+        }
         doGet(req,resp);
     }
 }
