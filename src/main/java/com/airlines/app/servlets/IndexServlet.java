@@ -24,11 +24,16 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BasicConfigurator.configure();
         req.setCharacterEncoding("UTF-8");
+        HttpSession session = req.getSession();
         DatabaseWorker databaseWorker = null;
         try {
             databaseWorker = DatabaseWorker.getInstance();
         } catch (SQLException e) {
             log.error(e);
+        }
+        if(session.getAttribute("currOnline") != null){
+            req.setAttribute("isLoggedIn", "OK");
+            req.setAttribute("login", databaseWorker.getLoginById((Integer) session.getAttribute("currOnline")));
         }
         List<Plane> planes = null;
         planes = databaseWorker.getPlaneList();

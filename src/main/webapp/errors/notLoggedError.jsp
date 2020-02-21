@@ -16,7 +16,7 @@
 <div class="w3-container w3-blue-grey w3-opacity w3-right-align">
     <h1>Airlines application</h1>
 </div>
-<div align="center"><strong><h1>Упс! Вы не вошли в систему, заказа билета невозможен</h1></strong></div>
+<div align="center"><strong><h1>Упс! Вы не вошли в систему, заказ билета невозможен</h1></strong></div>
 <div align="center"><img src="/resources/error.png" alt="ERROR"></div>
 <div align="center"><button class="w3-btn w3-green w3-round-large w3-margin-bottom" onclick="location.href='/'" ><h5><strong>На главную</strong></h5></button></div>
 </body>

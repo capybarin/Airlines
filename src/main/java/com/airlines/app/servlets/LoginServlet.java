@@ -33,9 +33,12 @@ public class LoginServlet extends HttpServlet {
             DatabaseWorker databaseWorker = DatabaseWorker.getInstance();
             if(databaseWorker.loginUser(name, pass)>0){
                 HttpSession session = req.getSession();
-                session.setAttribute("currOnline", databaseWorker.loginUser(name, pass));
-                //resp.sendRedirect("/afterLoginTest");
-                //return;
+                int userId = databaseWorker.loginUser(name,pass);
+                session.setAttribute("currOnline", userId);
+                //RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
+                //rd.forward(req, resp);
+                resp.sendRedirect("/");
+                return;
             } else {
                 req.setAttribute("error", "Логин или пароль введен не правильно");
             }

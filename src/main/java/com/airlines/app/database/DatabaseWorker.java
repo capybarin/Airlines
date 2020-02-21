@@ -103,4 +103,18 @@ public class DatabaseWorker {
         }
         return planes;
     }
+
+    public String getLoginById(int id){
+        String userLogin = null;
+        String sql = "SELECT * FROM user WHERE idUser = " + id;
+        try{
+            ResultSet name = connection.createStatement().executeQuery(sql);
+            while (name.next()){
+                userLogin = name.getString("Login");
+            }
+        } catch (SQLException e){
+            log.error(e);
+        }
+        return userLogin;
+    }
 }
