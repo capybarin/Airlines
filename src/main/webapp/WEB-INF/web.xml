@@ -33,4 +33,14 @@
         <servlet-name>index</servlet-name>
         <url-pattern></url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>com.airlines.app.servlets.LogOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -40,8 +40,6 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = req.getSession();
                 int userId = databaseWorker.loginUser(name,pass);
                 session.setAttribute("currOnline", userId);
-                //RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
-                //rd.forward(req, resp);
                 resp.sendRedirect("/");
                 return;
             } else {
