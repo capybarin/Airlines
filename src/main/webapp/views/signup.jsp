@@ -6,54 +6,152 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
 <head>
-    <title>Регистрация</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
-<body class="w3-light-grey">
-<div class="w3-container w3-blue-grey w3-opacity w3-right-align">
-    <h1>Airlines application</h1>
-</div>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Plane, Ticket">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="w3-container w3-padding">
-    <div class="w3-card-4">
-        <div class="w3-container w3-center w3-green">
-            <h2>Регистрация</h2>
+    <title>Регистрация</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #fff;
+            font: 16px 'Roboto', Arial, sans-serif;
+            min-width: 570px;
+        }
+
+        input, button {outline:none;}
+        a,a:hover,a:link,a:visited,a:active {text-decoration: none;}
+
+        header {
+            width: 100%;
+            position: fixed;
+            background-color: rgba(40, 40, 40, 0.5);
+            min-width: 570px;
+        }
+
+        .home_img_big {
+            width: 100%;
+            height: 100vh;
+            background-image: url(https://imgclf.112.ua/original/2019/02/04/375677.jpg?timestamp=1549237452);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            min-width: 570px;
+        }
+
+        .home_text {
+            width: 100%;
+            margin-top: calc(12vh + 48px);
+            position: absolute;
+            text-align: center;
+            min-width: 570px;
+        }
+
+        .text_shadow {
+            text-shadow: 1px 1px 8px #000;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        h2, h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .log_block {
+            width: 200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .input_text {
+            border: 1px solid #474747;
+            border-radius: 6px;
+            padding: 2px;
+            background-color: rgba(40, 40, 40, 0.5);
+            color: #fff;
+            width: 200px;
+        }
+
+        .button_enter,.button_back {
+            background-color: #2bcf57;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+            padding: 5px;
+            box-shadow:         0px 6px 14px 0px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow:    0px 6px 14px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .button_enter {background-color: #2bcf57; margin-top: 30px;}
+        .button_back {background-color: #2b7dcf; margin-top: 60px;}
+
+        .button_enter:hover {background-color: #21de54;}
+        .button_back:hover {background-color: #2786e6;}
+
+        .button_enter:active {background-color: #22e657;}
+        .button_back:active {background-color: #389bff;}
+
+    </style>
+
+</head>
+<body>
+<header>
+    <h1>Airlines Application</h1>
+</header>
+
+<div class="home_img_big">
+    <div class="home_text">
+        <div>
+            <h2 class="text_shadow">Регистрация</h2>
         </div>
-        <%
+            <%
             if(request.getAttribute("error") == null){
                 if (request.getAttribute("userName") != null) {
                     if (request.getAttribute("userSurname") != null) {
-                        out.println("<p>Пользоватль '" + request.getAttribute("userName") + " "
+                        out.println("<p class=\"text_shadow\">Пользоватль '" + request.getAttribute("userName") + " "
                                 + request.getAttribute("userSurname") + "' зарегистрирован!</p>");
-                        out.println("<button class=\"btn_st w3-btn w3-hover-green w3-round-large\" onclick=\"location.href='/login'\">Перейти на страницу входа</button>");
+                        out.println("<button class=\"button_enter\" onclick=\"location.href='/login'\">Перейти на страницу входа</button>");
                     }
                 }
             } else { out.println(request.getAttribute("error")); }
-        %>
-        <form method="post" class="w3-selection w3-light-grey w3-padding">
-            <label>Логин:
-                <input type="text" name="login" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
-            </label>
-            <label>Пароль:
-                <input type="password" name="pass" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
-            </label>
-            <label>Почта:
-                <input type="text" name="mail" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
-            </label>
-            <label>Имя:
-                <input type="text" name="name" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
-            </label>
-            <label>Фамилия:
-                <input type="text" name="surname" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
-            </label>
-            <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom">Подтвердить</button>
-        </form>
+             %>
+        <div class="log_block">
+            <form method="post">
+                <p class="text_shadow">Логин:</p>
+                <input type="text" name="login" class="input_text">
+
+                <p class="text_shadow">Пароль:</p>
+                <input type="password" name="pass" class="input_text">
+
+                <p class="text_shadow">Почта:</p>
+                <input type="text" name="mail" class="input_text">
+
+                <p class="text_shadow">Имя:</p>
+                <input type="text" name="name" class="input_text">
+
+                <p class="text_shadow">Фамилия:</p>
+                <input type="text" name="surname" class="input_text"><br>
+
+                <button type="submit" class="button_enter">Подтвердить</button>
+            </form>
+        </div>
+
+        <button class="button_back" onclick="location.href='/'">Назад</button>
+
     </div>
 </div>
-<div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-round-large" onclick="location.href='/'">Назад</button>
-</div>
+
 </body>
 </html>
