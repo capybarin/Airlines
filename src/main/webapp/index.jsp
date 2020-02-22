@@ -142,7 +142,7 @@
         <h1>Airlines Application</h1>
         <%
             if(request.getAttribute("isLoggedIn") != null){
-                out.println("<p class=\"nav_text_1\"><a href=\"\" class=\"a_white\">Список билетов</a></p>");
+                out.println("<p class=\"nav_text_1\"><a href=\"/tickets\" class=\"a_white\">Список билетов</a></p>");
                 out.println("<p class=\"nav_text_2\"><a href=\"/logout\" class=\"a_white\">Выход</a></p>");
             }
         %>

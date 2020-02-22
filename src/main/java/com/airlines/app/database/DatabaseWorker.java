@@ -1,6 +1,7 @@
 package com.airlines.app.database;
 
 import com.airlines.app.entities.Plane;
+import com.airlines.app.entities.Ticket;
 import com.airlines.app.entities.User;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
@@ -116,5 +117,19 @@ public class DatabaseWorker {
             log.error(e);
         }
         return userLogin;
+    }
+
+    public ArrayList<Ticket> getTicketByUserId (int id){
+        ArrayList<Ticket> tickets = new ArrayList<>();
+        try{
+            ResultSet resultSet = connection.createStatement().executeQuery("SELECT  * FROM ticket WHERE idUser = " + id);
+            while (resultSet.next()){
+                tickets.add(new Ticket(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),
+                        resultSet.getInt(4),resultSet.getString(5)));
+            }
+        } catch (SQLException e){
+            log.error(e);
+        }
+        return tickets;
     }
 }

@@ -2,7 +2,7 @@ package com.airlines.app.servlets;
 
 import com.airlines.app.database.DatabaseWorker;
 import com.airlines.app.entities.User;
-import com.airlines.app.helpers.EmailValidator;
+import com.airlines.app.validators.EmailValidator;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 

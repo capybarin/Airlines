@@ -1,4 +1,4 @@
-<%@ page import="com.airlines.app.helpers.EmailValidator" %><%--
+<%@ page import="com.airlines.app.validators.EmailValidator" %><%--
   Created by IntelliJ IDEA.
   User: vlad
   Date: 17.02.2020

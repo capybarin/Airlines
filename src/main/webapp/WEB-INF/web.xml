@@ -43,4 +43,14 @@
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>tickets</servlet-name>
+        <servlet-class>com.airlines.app.servlets.TicketListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>tickets</servlet-name>
+        <url-pattern>/tickets</url-pattern>
+    </servlet-mapping>
 </web-app>
