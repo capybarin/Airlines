@@ -6,14 +6,14 @@
   Time: 14:56
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=Cp1251" pageEncoding="Cp1251"%>
-<html lang="ru">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="keywords" content="Plane, Ticket">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Билеты</title>
+    <title>Р‘РёР»РµС‚С‹</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 
@@ -88,6 +88,14 @@
             min-height: calc(100vh - 120px);
         }
 
+        .button_order{
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+            padding: 5px;
+        }
+
         section {
             padding: 6px;
             border: 1px solid #ccc;
@@ -122,7 +130,7 @@
 
         <h1>Airlines Application</h1>
 
-        <p class="nav_text_1"><a href="/" class="a_white">Главная</a></p>
+        <p class="nav_text_1"><a href="/" class="a_white">Р“Р»Р°РІРЅР°СЏ</a></p>
 
     </nav>
 
@@ -130,23 +138,23 @@
 
 <div class="content">
 
-    <h2>Список билетов:</h2>
+    <h2>РЎРїРёСЃРѕРє Р±РёР»РµС‚РѕРІ:</h2>
 
     <c:forEach items="${tickets}" var="ticket">
         <section>
-            <p>Вылет: ${ticket.dateOfBeg}. Прибытие: ${ticket.dateOfEnd}</p>
-            <p>Терминал: ${ticket.terminal}.</p>
-            <p>Выход: ${ticket.gate}.</p>
-            <p>Самолет: ${ticket.planeName}.</p>
-            <p>Класс: ${ticket.planeType}.</p>
-            <p>Билет на имя: ${ticket.userName} ${ticket.userSurname}.</p>
+            <p>Р’С‹Р»РµС‚: ${ticket.dateOfBeg}. РџСЂРёР±С‹С‚РёРµ: ${ticket.dateOfEnd}</p>
+            <p>РўРµСЂРјРёРЅР°Р»: ${ticket.terminal}.</p>
+            <p>Р’С‹С…РѕРґ: ${ticket.gate}.</p>
+            <p>РЎР°РјРѕР»РµС‚: ${ticket.planeName}.</p>
+            <p>РљР»Р°СЃСЃ: ${ticket.planeType}.</p>
+            <p>Р‘РёР»РµС‚ РЅР° РёРјСЏ: ${ticket.userName} ${ticket.userSurname}.</p>
         </section>
     </c:forEach>
 
 </div>
 
 <footer>
-    <p class="footer_text">Курсова робота Бездушного Владислава</p>
+    <p class="footer_text">РљСѓСЂСЃРѕРІР° СЂРѕР±РѕС‚Р° Р‘РµР·РґСѓС€РЅРѕРіРѕ Р’Р»Р°РґРёСЃР»Р°РІР°</p>
 </footer>
 
 </body>
