@@ -49,9 +49,12 @@ public class TicketListServlet extends HttpServlet {
                 currTickets.add(ticketsOutputHelper);
             }
             log.info(currTickets);
+            req.setAttribute("tickets", currTickets);
         } catch (SQLException e) {
             log.error(e);
         }
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/ticketList.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
     @Override
