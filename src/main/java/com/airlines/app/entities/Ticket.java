@@ -5,21 +5,34 @@ public class Ticket {
     private int idUser;
     private int idPlane;
     private int seat;
-    private String date;
+    private String dateOfBeg;
+    private String dateOfEnd;
+    private String terminal;
+    private String gate;
 
-    public Ticket(int idUser, int idPlane, int seat, String date) {
-        this.idUser = idUser;
-        this.idPlane = idPlane;
-        this.seat = seat;
-        this.date = date;
-    }
-
-    public Ticket(int id, int idUser, int idPlane, int seat, String date) {
+    public Ticket(int id, int idUser, int idPlane, int seat, String dateOfBeg, String dateOfEnd, String terminal, String gate) {
         this.id = id;
         this.idUser = idUser;
         this.idPlane = idPlane;
         this.seat = seat;
-        this.date = date;
+        this.dateOfBeg = dateOfBeg;
+        this.dateOfEnd = dateOfEnd;
+        this.terminal = terminal;
+        this.gate = gate;
+    }
+
+    public Ticket(int idUser, int idPlane, int seat, String dateOfBeg, String dateOfEnd, String terminal, String gate) {
+        this.idUser = idUser;
+        this.idPlane = idPlane;
+        this.seat = seat;
+        this.dateOfBeg = dateOfBeg;
+        this.dateOfEnd = dateOfEnd;
+        this.terminal = terminal;
+        this.gate = gate;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getIdUser() {
@@ -46,16 +59,36 @@ public class Ticket {
         this.seat = seat;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateOfBeg() {
+        return dateOfBeg;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateOfBeg(String dateOfBeg) {
+        this.dateOfBeg = dateOfBeg;
     }
 
-    public int getId() {
-        return id;
+    public String getDateOfEnd() {
+        return dateOfEnd;
+    }
+
+    public void setDateOfEnd(String dateOfEnd) {
+        this.dateOfEnd = dateOfEnd;
+    }
+
+    public String getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(String terminal) {
+        this.terminal = terminal;
+    }
+
+    public String getGate() {
+        return gate;
+    }
+
+    public void setGate(String gate) {
+        this.gate = gate;
     }
 
     @Override
@@ -65,7 +98,10 @@ public class Ticket {
                 ", idUser=" + idUser +
                 ", idPlane=" + idPlane +
                 ", seat=" + seat +
-                ", date='" + date + '\'' +
+                ", dateOfBeg='" + dateOfBeg + '\'' +
+                ", dateOfEnd='" + dateOfEnd + '\'' +
+                ", terminal='" + terminal + '\'' +
+                ", gate='" + gate + '\'' +
                 '}';
     }
 }

@@ -35,7 +35,7 @@ public class TicketListServlet extends HttpServlet {
             return;
         }
         DatabaseWorker databaseWorker = null;
-        try {
+        /*try {
             databaseWorker = DatabaseWorker.getInstance();
             List<Ticket> tickets = databaseWorker.getTicketByUserId((Integer) session.getAttribute("currOnline"));
             log.info(tickets);
@@ -46,7 +46,7 @@ public class TicketListServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             log.error(e);
-        }
+        }*/
     }
 
     @Override
