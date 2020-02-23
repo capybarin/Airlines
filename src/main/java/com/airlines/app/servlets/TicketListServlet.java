@@ -35,18 +35,23 @@ public class TicketListServlet extends HttpServlet {
             return;
         }
         DatabaseWorker databaseWorker = null;
-        /*try {
+        try {
             databaseWorker = DatabaseWorker.getInstance();
             List<Ticket> tickets = databaseWorker.getTicketByUserId((Integer) session.getAttribute("currOnline"));
             log.info(tickets);
             TicketsOutputHelper ticketsOutputHelper = null;
             List<TicketsOutputHelper> currTickets = new ArrayList<>();
             for (Ticket ticket: tickets) {
-                //ticketsOutputHelper = new TicketsOutputHelper(ticket.getId(),);
+                ticketsOutputHelper = new TicketsOutputHelper(ticket.getId(),ticket.getSeat(), ticket.getDateOfBeg(), ticket.getDateOfEnd(),
+                        ticket.getTerminal(),ticket.getGate(), databaseWorker.getUsernameById(ticket.getIdUser()),
+                        databaseWorker.getUserSurnameById(ticket.getIdUser()), databaseWorker.getPlaneNameById(ticket.getIdPlane()),
+                        databaseWorker.getPlaneTypeById(ticket.getIdPlane()));
+                currTickets.add(ticketsOutputHelper);
             }
+            log.info(currTickets);
         } catch (SQLException e) {
             log.error(e);
-        }*/
+        }
     }
 
     @Override

@@ -125,11 +125,68 @@ public class DatabaseWorker {
             ResultSet resultSet = connection.createStatement().executeQuery("SELECT  * FROM ticket WHERE idUser = " + id);
             while (resultSet.next()){
                 tickets.add(new Ticket(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),
-                        resultSet.getInt(4),resultSet.getString(5)));
+                        resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6),
+                        resultSet.getString(7),resultSet.getString(8)));
             }
         } catch (SQLException e){
             log.error(e);
         }
         return tickets;
+    }
+
+    public String getUsernameById (int id){
+        String name = null;
+        String sql = "SELECT Name FROM user WHERE idUser = " + id;
+        try{
+            ResultSet names = connection.createStatement().executeQuery(sql);
+            while (names.next()){
+                name = names.getString("Name");
+            }
+        } catch (SQLException e){
+            log.error(e);
+        }
+        return name;
+    }
+
+    public String getUserSurnameById (int id){
+        String surName = null;
+        String sql = "SELECT Surname FROM user WHERE idUser = " + id;
+        try{
+            ResultSet names = connection.createStatement().executeQuery(sql);
+            while (names.next()){
+                surName = names.getString("Surname");
+            }
+        } catch (SQLException e){
+            log.error(e);
+        }
+        return surName;
+    }
+
+    public String getPlaneNameById (int id){
+        String name = null;
+        String sql = "SELECT Name FROM plane WHERE idPlane = " + id;
+        try{
+            ResultSet names = connection.createStatement().executeQuery(sql);
+            while (names.next()){
+                name = names.getString("Name");
+            }
+        } catch (SQLException e){
+            log.error(e);
+        }
+        return name;
+    }
+
+    public String getPlaneTypeById (int id){
+        String type = null;
+        String sql = "SELECT Type FROM plane WHERE idPlane = " + id;
+        try{
+            ResultSet names = connection.createStatement().executeQuery(sql);
+            while (names.next()){
+                type = names.getString("Type");
+            }
+        } catch (SQLException e){
+            log.error(e);
+        }
+        return type;
     }
 }

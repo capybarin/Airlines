@@ -13,24 +13,20 @@ public class TicketsOutputHelper {
     private String planeType;
 
     public TicketsOutputHelper(int id, int seat, String dateOfBeg, String dateOfEnd, String terminal, String gate, String userName, String userSurname, String planeName, String planeType) {
-        this.id = id;
-        this.seat = seat;
-        this.dateOfBeg = dateOfBeg;
-        this.dateOfEnd = dateOfEnd;
-        this.terminal = terminal;
-        this.gate = gate;
-        this.userName = userName;
-        this.userSurname = userSurname;
-        this.planeName = planeName;
-        this.planeType = planeType;
+        this.id = id; //Ticket
+        this.seat = seat; //Ticket
+        this.dateOfBeg = dateOfBeg; //Ticket
+        this.dateOfEnd = dateOfEnd; //Ticket
+        this.terminal = terminal; //Ticket
+        this.gate = gate; //Ticket
+        this.userName = userName; //User
+        this.userSurname = userSurname; //User
+        this.planeName = planeName; //Plane
+        this.planeType = planeType; //Plane
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getSeat() {
