@@ -1,0 +1,125 @@
+CREATE DATABASE  IF NOT EXISTS `airlines` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `airlines`;
+-- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
+--
+-- Host: 127.0.0.1    Database: airlines
+-- ------------------------------------------------------
+-- Server version	5.5.62
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `plane`
+--
+
+DROP TABLE IF EXISTS `plane`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plane` (
+  `idPlane` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `Type` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `Company` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `Seats` int(11) DEFAULT NULL,
+  `Busy` enum('free','busy') CHARACTER SET latin1 DEFAULT NULL,
+  `From` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `To` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `Price` int(11) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  PRIMARY KEY (`idPlane`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plane`
+--
+
+LOCK TABLES `plane` WRITE;
+/*!40000 ALTER TABLE `plane` DISABLE KEYS */;
+INSERT INTO `plane` VALUES (1,'Boeing 737','Business-class','Aerostar',133,'free','Kyiv','Odessa',1200,'2020-03-20'),(2,'Boeing 737','Econom-class','Aerostat',133,'free','Kyiv','Odessa',700,'2020-03-24');
+/*!40000 ALTER TABLE `plane` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ticket`
+--
+
+DROP TABLE IF EXISTS `ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ticket` (
+  `idTicket` int(11) NOT NULL AUTO_INCREMENT,
+  `idUser` int(11) NOT NULL,
+  `idPlane` int(11) NOT NULL,
+  `Seat` int(11) DEFAULT NULL,
+  `DateOfBeg` datetime DEFAULT NULL,
+  `DateOfEnd` datetime DEFAULT NULL,
+  `Terminal` varchar(45) DEFAULT NULL,
+  `Gate` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idTicket`,`idUser`,`idPlane`),
+  KEY `fk_Ticket_User_idx` (`idUser`),
+  KEY `fk_Ticket_Plane1_idx` (`idPlane`),
+  CONSTRAINT `fk_Ticket_Plane1` FOREIGN KEY (`idPlane`) REFERENCES `plane` (`idPlane`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Ticket_User` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket`
+--
+
+LOCK TABLES `ticket` WRITE;
+/*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
+INSERT INTO `ticket` VALUES (1,1,1,15,'2020-03-20 16:00:00','2020-03-20 23:00:00','Terminal 3','E18');
+/*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `idUser` int(11) NOT NULL AUTO_INCREMENT,
+  `Login` varchar(15) CHARACTER SET latin1 DEFAULT NULL,
+  `Password` varchar(25) CHARACTER SET latin1 DEFAULT NULL,
+  `Name` varchar(40) CHARACTER SET latin1 DEFAULT NULL,
+  `Surname` varchar(40) CHARACTER SET latin1 DEFAULT NULL,
+  `Mail` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  PRIMARY KEY (`idUser`),
+  UNIQUE KEY `Mail_UNIQUE` (`Mail`),
+  UNIQUE KEY `Login_UNIQUE` (`Login`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'capych','bober','Vlad','Bezd','vladibzd@gmail.com'),(2,'bobrov','qwerty123','Vlad','Bezdushniy','mail@gmail.com'),(3,'Vlydislav','Vladik12','Vlad','Vozd','bober@gmail.com');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-03-10 17:05:08
