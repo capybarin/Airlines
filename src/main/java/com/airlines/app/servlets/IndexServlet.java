@@ -35,9 +35,6 @@ public class IndexServlet extends HttpServlet {
             req.setAttribute("isLoggedIn", "OK");
             req.setAttribute("login", databaseWorker.getLoginById((Integer) session.getAttribute("currOnline")));
         }
-        List<Plane> planes = null;
-        planes = databaseWorker.getPlaneList();
-        req.setAttribute("planes", planes);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
         requestDispatcher.forward(req, resp);
     }
@@ -46,7 +43,7 @@ public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BasicConfigurator.configure();
         req.setCharacterEncoding("UTF-8");
-        String planeId = req.getParameter("id");
+        /*String planeId = req.getParameter("id");
         log.info(planeId);
         HttpSession session = req.getSession();
         if (session.getAttribute("currOnline") == null)
@@ -55,7 +52,9 @@ public class IndexServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/errors/notLoggedError.jsp");
             requestDispatcher.forward(req, resp);
             return;
-        }
+        }*/
+        String from = req.getParameter("from");
+        log.info(from);
         doGet(req,resp);
     }
 }
