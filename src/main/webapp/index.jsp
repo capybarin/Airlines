@@ -237,29 +237,30 @@
                 <p>
                     <input list="CityFrom" name="from" placeholder="Откуда" class="search_text" required>
                     <datalist id="CityFrom">
-                        <option value="НАЗВАНИЯ ГОРОДА">
-                        <option value="Винница">
+                        <option value="Vinnitsya">
                     </datalist>
 
-                    <input list="CityTill" placeholder="Куда" class="search_text" required>
+                    <input list="CityTill" name="destination" placeholder="Куда" class="search_text" required>
                     <datalist id="CityTill">
-                        <option value="НАЗВАНИЯ ГОРОДА">
+                        <option value="Odessa">
+                        <option value="Kyiv">
                     </datalist>
                 </p>
 
                 <p>Вылет - Прибытие</p>
 
                 <p>
-                    <input type="date" id="DateTodayFrom" value="2020-01-26" class="date_selection" required>
-                    <input type="date" id="DateTodayTill" value="2020-01-26" class="date_selection" required>
+                    <input type="date" id="DateTodayFrom" name="dateOfBeg" value="2020-01-26" class="date_selection" required>
+                    <input type="date" id="DateTodayTill" name="dateOfEnd" value="2020-01-26" class="date_selection" required>
                 </p>
 
                 <p>Класс</p>
 
                 <p>
-                    <input list="ClassTicket" placeholder="Класс" class="search_text">
+                    <input list="ClassTicket" name="planeClass" placeholder="Класс" class="search_text">
                     <datalist id="ClassTicket">
-                        <option value="НАЗВАНИЯ КЛАССА">
+                        <option value="Business">
+                        <option value="Economy">
                     </datalist>
                 </p>
 

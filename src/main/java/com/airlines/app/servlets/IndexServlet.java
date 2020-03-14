@@ -54,7 +54,11 @@ public class IndexServlet extends HttpServlet {
             return;
         }*/
         String from = req.getParameter("from");
-        log.info(from);
+        String to = req.getParameter("destination");
+        String beg = req.getParameter("dateOfBeg");
+        String end = req.getParameter("dateOfEnd");
+        String pClass = req.getParameter("planeClass");
+        log.info(from + " " + to + " " + beg + " " + end + " " + pClass);
         doGet(req,resp);
     }
 }
