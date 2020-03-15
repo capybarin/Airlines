@@ -31,6 +31,10 @@ public class IndexServlet extends HttpServlet {
         } catch (SQLException e) {
             log.error(e);
         }
+        List<Plane> destination = databaseWorker.getPlaneByDestination("Odessa");
+        List<Plane> departure = databaseWorker.getPlaneByDeparture("Vinnitsya");
+        log.info("Dest: " + destination);
+        log.info("Dep: " + departure);
         if(session.getAttribute("currOnline") != null){
             req.setAttribute("isLoggedIn", "OK");
             req.setAttribute("login", databaseWorker.getLoginById((Integer) session.getAttribute("currOnline")));
@@ -56,9 +60,8 @@ public class IndexServlet extends HttpServlet {
         String from = req.getParameter("from");
         String to = req.getParameter("destination");
         String beg = req.getParameter("dateOfBeg");
-        String end = req.getParameter("dateOfEnd");
         String pClass = req.getParameter("planeClass");
-        log.info(from + " " + to + " " + beg + " " + end + " " + pClass);
+        log.info(from + " " + to + " " + beg + " " + " " + pClass);
         doGet(req,resp);
     }
 }

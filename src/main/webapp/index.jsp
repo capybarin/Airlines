@@ -48,7 +48,7 @@
         nav {
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-between;
             max-width: 600px;
             margin: auto;
         }
@@ -247,11 +247,10 @@
                     </datalist>
                 </p>
 
-                <p>Вылет - Прибытие</p>
+                <p>Вылет</p>
 
                 <p>
                     <input type="date" id="DateTodayFrom" name="dateOfBeg" value="2020-01-26" class="date_selection" required>
-                    <input type="date" id="DateTodayTill" name="dateOfEnd" value="2020-01-26" class="date_selection" required>
                 </p>
 
                 <p>Класс</p>

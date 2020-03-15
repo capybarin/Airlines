@@ -189,4 +189,38 @@ public class DatabaseWorker {
         }
         return type;
     }
+
+    public ArrayList<Plane> getPlaneByDestination(String dest){
+        String sql = "SELECT * FROM plane WHERE plane.To = '" + dest + "'";
+        ArrayList<Plane> planes = new ArrayList<>();
+        try {
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()){
+                planes.add(new Plane(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                        resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),
+                        resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),
+                        resultSet.getString(10)));
+            }
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return planes;
+    }
+
+    public ArrayList<Plane> getPlaneByDeparture(String dep){
+        String sql = "SELECT * FROM plane WHERE plane.From = '" + dep + "'";
+        ArrayList<Plane> planes = new ArrayList<>();
+        try {
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()){
+                planes.add(new Plane(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                        resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),
+                        resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),
+                        resultSet.getString(10)));
+            }
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return planes;
+    }
 }
