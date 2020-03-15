@@ -238,6 +238,7 @@
                     <input list="CityFrom" name="from" placeholder="Откуда" class="search_text" required>
                     <datalist id="CityFrom">
                         <option value="Vinnitsya">
+                        <option value="Kyiv">
                     </datalist>
 
                     <input list="CityTill" name="destination" placeholder="Куда" class="search_text" required>

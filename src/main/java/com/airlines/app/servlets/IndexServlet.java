@@ -19,6 +19,37 @@ import java.util.List;
 public class IndexServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(IndexServlet.class);
+    private DatabaseWorker databaseWorker;
+
+    private String isDirect(String from, String to){
+        try {
+            databaseWorker = DatabaseWorker.getInstance();
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        List<Plane> direct = databaseWorker.getPlanesFromTo(from,to);
+        log.info(direct);
+        if (direct.isEmpty())
+            return isNotDirect(from, to);
+        return "Direct";
+    }
+
+    private String isNotDirect(String from, String to){
+        try {
+            databaseWorker = DatabaseWorker.getInstance();
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        List<Plane> departure = databaseWorker.getPlaneByDeparture(from);
+        List<Plane> destination = databaseWorker.getPlaneByDestination(to);
+        for (Plane planeDep : departure) {
+            for (Plane planeDest : destination) {
+                if (planeDep.getTo().equals(planeDest.getFrom()))
+                    return "Not direct";
+            }
+        }
+        return "NoRoute";
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -63,11 +94,8 @@ public class IndexServlet extends HttpServlet {
         String to = req.getParameter("destination");
         String beg = req.getParameter("dateOfBeg");
         String pClass = req.getParameter("planeClass");
-        List<Plane> departure = databaseWorker.getPlaneByDeparture(from);
-        List<Plane> destination = databaseWorker.getPlaneByDestination(to);
-        log.info("Dest: " + destination);
-        log.info("Dep: " + departure);
         log.info(from + " " + to + " " + beg + " " + " " + pClass);
+        log.info(isDirect(from,to));
         doGet(req,resp);
     }
 }
