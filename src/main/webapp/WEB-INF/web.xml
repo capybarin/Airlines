@@ -53,4 +53,14 @@
         <servlet-name>ticketList</servlet-name>
         <url-pattern>/tickets</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>routes</servlet-name>
+        <servlet-class>com.airlines.app.servlets.RouteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>routes</servlet-name>
+        <url-pattern>/routes</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -16,6 +16,8 @@ import java.sql.SQLException;
 public class LoginServlet extends HttpServlet {
     private static final Logger log = Logger.getLogger(LoginServlet.class);
 
+    //TODO: Сделать с помощью сесси маркеры где находится пользователь, и по ним делать ретурны по страницам
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");

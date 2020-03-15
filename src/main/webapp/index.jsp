@@ -251,7 +251,7 @@
                 <p>Вылет</p>
 
                 <p>
-                    <input type="date" id="DateTodayFrom" name="dateOfBeg" value="2020-01-26" class="date_selection" required>
+                    <input type="date" id="DateTodayFrom" name="dateOfBeg" class="date_selection">
                 </p>
 
                 <p>Класс</p>
