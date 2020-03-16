@@ -7,7 +7,6 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,6 +55,40 @@ public class RouteServlet extends HttpServlet {
         return notDirect;
     }
 
+    private ArrayList<Plane> getDirect (String from, String to){
+        DatabaseWorker databaseWorker = null;
+        try {
+            databaseWorker = DatabaseWorker.getInstance();
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        ArrayList<Plane> direct = databaseWorker.getPlanesFromTo(from,to);
+        log.info(direct);
+        return direct;
+    }
+
+    private ArrayList<NotDirectRoutesOutputHelper> getNotDirect (String from, String to){
+        DatabaseWorker databaseWorker = null;
+        try {
+            databaseWorker = DatabaseWorker.getInstance();
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        List<Plane> departure = databaseWorker.getPlaneByDeparture(from);
+        List<Plane> destination = databaseWorker.getPlaneByDestination(to);
+        ArrayList<NotDirectRoutesOutputHelper> notDirect = new ArrayList<>();
+        for (Plane planeDep : departure) {
+            for (Plane planeDest : destination) {
+                if (planeDep.getTo().equals(planeDest.getFrom())){
+                    int price = planeDep.getPrice()+planeDest.getPrice();
+                    notDirect.add(new NotDirectRoutesOutputHelper(planeDep.getName(),planeDep.getType(),planeDep.getCompany(),
+                            planeDep.getSeats(),planeDep.getFrom(),planeDep.getTo(),planeDest.getTo(),price,planeDep.getDate()));
+                }
+            }
+        }
+        return notDirect;
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BasicConfigurator.configure();
@@ -89,7 +122,12 @@ public class RouteServlet extends HttpServlet {
             //TODO: Методы с учетом даты и класса
         }
         if (beg.equals("") && pClass.equals("")){
-            //TODO: Методы без учета даты и класса
+            List<Plane> direct = getDirect(from,to);
+            List<NotDirectRoutesOutputHelper> notDirect = getNotDirect(from,to);
+            log.info("DIR: " + direct);
+            log.info("NOTDIR: " + notDirect);
+            req.setAttribute("dirList", direct);
+            req.setAttribute("notDirList", notDirect);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/routes.jsp");
         requestDispatcher.forward(req, resp);

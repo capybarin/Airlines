@@ -12,32 +12,38 @@
     <title>Title</title>
 </head>
 <body>
-<div>Прямые перелеты:
-    <c:forEach items="${dirList}" var="dir">
-        <ul>
-            <li>
-                <h5>Авиакомпания: ${dir.company}</h5>
-                <h5>Воздушное судно: ${dir.name}</h5>
-                <h5>Вылет: ${dir.date}</h5>
-                <h5>Маршрут: ${dir.from} --> ${dir.to}</h5>
-                <h5>Цена: ${dir.price}; Посдаочных мест: ${dir.seats}</h5>
-            </li>
-        </ul>
-    </c:forEach>
+<div>
+    <c:if test="${not empty dirList}">
+        Прямые перелеты:
+        <c:forEach items="${dirList}" var="dir">
+            <ul>
+                <li>
+                    <h5>Авиакомпания: ${dir.company}</h5>
+                    <h5>Воздушное судно: ${dir.name}</h5>
+                    <h5>Вылет: ${dir.date} Класс: ${dir.type}</h5>
+                    <h5>Маршрут: ${dir.from} --> ${dir.to}</h5>
+                    <h5>Цена: ${dir.price}; Посдаочных мест: ${dir.seats}</h5>
+                </li>
+            </ul>
+        </c:forEach>
+    </c:if>
 </div>
 
-<div>Непрямые перелеты:
-    <c:forEach items="${notDirList}" var="ndir">
-        <ul>
-            <li>
-                <h5>Авиакомпания: ${ndir.company}</h5>
-                <h5>Воздушное судно: ${ndir.name}</h5>
-                <h5>Вылет: ${ndir.date}</h5>
-                <h5>Маршрут: ${ndir.from} --> ${ndir.tmpLoc} --> ${ndir.to}</h5>
-                <h5>Цена: ${ndir.price}</h5>
-            </li>
-        </ul>
-    </c:forEach>
+<div>
+    <c:if test="${not empty notDirList}">
+        Непрямые перелеты:
+        <c:forEach items="${notDirList}" var="ndir">
+            <ul>
+                <li>
+                    <h5>Авиакомпания: ${ndir.company}</h5>
+                    <h5>Воздушное судно: ${ndir.name}</h5>
+                    <h5>Вылет: ${ndir.date} Класс: ${ndir.type}</h5>
+                    <h5>Маршрут: ${ndir.from} --> ${ndir.tmpLoc} --> ${ndir.to}</h5>
+                    <h5>Цена: ${ndir.price}</h5>
+                </li>
+            </ul>
+        </c:forEach>
+    </c:if>
 </div>
 </body>
 </html>
