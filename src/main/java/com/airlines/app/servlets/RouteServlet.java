@@ -70,7 +70,7 @@ public class RouteServlet extends HttpServlet {
         log.info("beg: " + beg.equals(""));
         log.info("pClass: " + pClass.equals(""));
         if (beg.equals("") && !pClass.equals("")){
-            //Методы с учетом класса без даты
+            //TODO: Методы с учетом класса без даты
         }
         if (!beg.equals("") && pClass.equals("")){
             List<Plane> dateDirect = getDateDirect(from,to, beg);
@@ -81,10 +81,10 @@ public class RouteServlet extends HttpServlet {
             req.setAttribute("notDirList", dateNotDirect);
         }
         if (!beg.equals("") && !pClass.equals("")){
-            //Методы с учетом даты и класса
+            //TODO: Методы с учетом даты и класса
         }
         if (beg.equals("") && pClass.equals("")){
-            //Методы без учета даты и класса
+            //TODO: Методы без учета даты и класса
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/routes.jsp");
         requestDispatcher.forward(req, resp);

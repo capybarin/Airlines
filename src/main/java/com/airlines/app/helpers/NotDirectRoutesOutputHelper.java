@@ -1,6 +1,9 @@
 package com.airlines.app.helpers;
 
 public class NotDirectRoutesOutputHelper {
+    //TODO: idFirst - для первого перелта ид, idSecond - для второго. Можно в будущем сделать двойной заказа билетов
+    private int idFirst;
+    private int idSecond;
     private String name;
     private String type;
     private String company;

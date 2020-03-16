@@ -75,6 +75,12 @@ public class DatabaseWorker {
         }
     }
 
+    /**
+     * Проверяет есть ли в БД юзер с указанным данными
+     * @param userLogin
+     * @param userPass
+     * @return ид юзера с указанными данными или -1 если такого нет
+     */
     public int loginUser(String userLogin, String userPass){
         int userId = -1;
         String sql = "SELECT idUser FROM user WHERE Login = " + "'" + userLogin + "'" + " AND Password = " + "'" + userPass + "'";
@@ -89,6 +95,9 @@ public class DatabaseWorker {
         return userId;
     }
 
+    /**
+     * @return Возвращает список всех перелетов
+     */
     public ArrayList<Plane> getPlaneList(){
         ArrayList<Plane> planes = new ArrayList<>();
         try {
@@ -105,6 +114,10 @@ public class DatabaseWorker {
         return planes;
     }
 
+    /**
+     * @param id
+     * @return возвращает логин юзера по его ид
+     */
     public String getLoginById(int id){
         String userLogin = null;
         String sql = "SELECT * FROM user WHERE idUser = " + id;
@@ -119,6 +132,10 @@ public class DatabaseWorker {
         return userLogin;
     }
 
+    /**
+     * @param id
+     * @return возвращает билеты юзера по его ид
+     */
     public ArrayList<Ticket> getTicketByUserId (int id){
         ArrayList<Ticket> tickets = new ArrayList<>();
         try{
@@ -134,6 +151,10 @@ public class DatabaseWorker {
         return tickets;
     }
 
+    /**
+     * @param id
+     * @return возвращает имя юзера по его ид
+     */
     public String getUsernameById (int id){
         String name = null;
         String sql = "SELECT Name FROM user WHERE idUser = " + id;
@@ -148,6 +169,10 @@ public class DatabaseWorker {
         return name;
     }
 
+    /**
+     * @param id
+     * @return возвращает фамилию юзера по его ид
+     */
     public String getUserSurnameById (int id){
         String surName = null;
         String sql = "SELECT Surname FROM user WHERE idUser = " + id;
@@ -162,6 +187,10 @@ public class DatabaseWorker {
         return surName;
     }
 
+    /**
+     * @param id
+     * @return возвращает перелет по ид
+     */
     public String getPlaneNameById (int id){
         String name = null;
         String sql = "SELECT Name FROM plane WHERE idPlane = " + id;
@@ -176,6 +205,10 @@ public class DatabaseWorker {
         return name;
     }
 
+    /**
+     * @param id
+     * @return возвращает тип самолета по ид
+     */
     public String getPlaneTypeById (int id){
         String type = null;
         String sql = "SELECT Type FROM plane WHERE idPlane = " + id;
@@ -190,6 +223,11 @@ public class DatabaseWorker {
         return type;
     }
 
+    /**
+     * @param dest
+     * @param date
+     * @return возвращает все перелеты по указанной дате и точке прибытия
+     */
     public ArrayList<Plane> getPlaneByDestinationDate(String dest, String date){
         String sql = "SELECT * FROM plane WHERE plane.To = '" + dest + "' AND plane.Date = '" + date +"'";
         ArrayList<Plane> planes = new ArrayList<>();
@@ -207,6 +245,10 @@ public class DatabaseWorker {
         return planes;
     }
 
+    /**
+     * @param dest
+     * @return возвращает все перелеты по указанной точке прибытия
+     */
     public ArrayList<Plane> getPlaneByDestination(String dest){
         String sql = "SELECT * FROM plane WHERE plane.To = '" + dest + "'";
         ArrayList<Plane> planes = new ArrayList<>();
@@ -224,6 +266,11 @@ public class DatabaseWorker {
         return planes;
     }
 
+    /**
+     * @param dep
+     * @param date
+     * @return возвращает все перелеты по указанной дате и точке отправки
+     */
     public ArrayList<Plane> getPlaneByDepartureDate(String dep, String date){
         String sql = "SELECT * FROM plane WHERE plane.From = '" + dep + "' AND plane.Date = '" + date + "'";
         ArrayList<Plane> planes = new ArrayList<>();
@@ -241,7 +288,11 @@ public class DatabaseWorker {
         return planes;
     }
 
-    public ArrayList<Plane> getPlaneByDepartureDate(String dep){
+    /**
+     * @param dep
+     * @return возвращает все перелеты по указанной точке отправки
+     */
+    public ArrayList<Plane> getPlaneByDeparture(String dep){
         String sql = "SELECT * FROM plane WHERE plane.From = '" + dep + "'";
         ArrayList<Plane> planes = new ArrayList<>();
         try {
@@ -258,6 +309,12 @@ public class DatabaseWorker {
         return planes;
     }
 
+    /**
+     * @param from
+     * @param to
+     * @param date
+     * @return возвращает все перелеты по указанной дате, точке прибытия и отбытия
+     */
     public ArrayList<Plane> getPlanesFromToDate(String from, String to, String date){
         String sql = "SELECT * FROM plane WHERE plane.From = '" + from + "' AND plane.TO = '" + to + "'" +
                 " AND plane.Date = '" + date +"'";
@@ -276,6 +333,11 @@ public class DatabaseWorker {
         return planes;
     }
 
+    /**
+     * @param from
+     * @param to
+     * @return возвращает все перелеты по точке прибытия и отбытия
+     */
     public ArrayList<Plane> getPlanesFromTo(String from, String to){
         String sql = "SELECT * FROM plane WHERE plane.From = '" + from + "' AND plane.TO = '" + to + "'";
         ArrayList<Plane> planes = new ArrayList<>();
