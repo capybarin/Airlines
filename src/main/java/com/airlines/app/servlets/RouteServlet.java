@@ -7,6 +7,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -64,11 +65,15 @@ public class RouteServlet extends HttpServlet {
         String to = (String) session.getAttribute("to");
         String beg = (String) session.getAttribute("beg");
         String pClass = (String) session.getAttribute("pClass");
+        if (from == null || to == null || beg == null || pClass==null){
+            resp.sendRedirect("/errors/routeError.jsp");
+            return;
+        }
         log.info(from + " " + to + " " + beg + " " + pClass);
-        log.info("from: " + from.equals(""));
-        log.info("to: " + to.equals(""));
-        log.info("beg: " + beg.equals(""));
-        log.info("pClass: " + pClass.equals(""));
+        //log.info("from: " + from.equals(""));
+        //log.info("to: " + to.equals(""));
+        //log.info("beg: " + beg.equals(""));
+        //log.info("pClass: " + pClass.equals(""));
         if (beg.equals("") && !pClass.equals("")){
             //TODO: Методы с учетом класса без даты
         }
