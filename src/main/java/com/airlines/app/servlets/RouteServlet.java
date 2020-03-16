@@ -123,6 +123,41 @@ public class RouteServlet extends HttpServlet {
         return notDirect;
     }
 
+    private ArrayList<Plane> getTypeDateDirect (String from, String to, String type, String date){
+        DatabaseWorker databaseWorker = null;
+        try {
+            databaseWorker = DatabaseWorker.getInstance();
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        ArrayList<Plane> direct = databaseWorker.getPlanesTypeDateFromTo(from,to, type, date);
+        log.info(direct);
+        return direct;
+    }
+
+    private ArrayList<NotDirectRoutesOutputHelper> getTypeDateNotDirect (String from, String to, String type, String date){
+        DatabaseWorker databaseWorker = null;
+        try {
+            databaseWorker = DatabaseWorker.getInstance();
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        List<Plane> departure = databaseWorker.getPlaneByTypeDateDeparture(from, type, date);
+        List<Plane> destination = databaseWorker.getPlaneByTypeDateDestination(to, type, date);
+        ArrayList<NotDirectRoutesOutputHelper> notDirect = new ArrayList<>();
+        for (Plane planeDep : departure) {
+            for (Plane planeDest : destination) {
+                if (planeDep.getTo().equals(planeDest.getFrom()) && planeDep.getType().equals(planeDest.getType())
+                        && planeDep.getDate().equals(planeDest.getDate())){
+                    int price = planeDep.getPrice()+planeDest.getPrice();
+                    notDirect.add(new NotDirectRoutesOutputHelper(planeDep.getName(),planeDep.getType(),planeDep.getCompany(),
+                            planeDep.getSeats(),planeDep.getFrom(),planeDep.getTo(),planeDest.getTo(),price,planeDep.getDate()));
+                }
+            }
+        }
+        return notDirect;
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BasicConfigurator.configure();
@@ -140,27 +175,24 @@ public class RouteServlet extends HttpServlet {
         if (beg.equals("") && !pClass.equals("")){
             List<Plane> directType = getTypeDirect(from, to, pClass);
             List<NotDirectRoutesOutputHelper> notDirectType = getTypeNotDirect(from, to, pClass);
-            log.info("DIR: " + directType);
-            log.info("NOTDIR: " + notDirectType);
             req.setAttribute("dirList", directType);
             req.setAttribute("notDirList", notDirectType);
         }
         if (!beg.equals("") && pClass.equals("")){
             List<Plane> dateDirect = getDateDirect(from,to, beg);
             List<NotDirectRoutesOutputHelper> dateNotDirect = getDateNotDirect(from,to,beg);
-            log.info("DIR: " + dateDirect);
-            log.info("NOTDIR: " + dateNotDirect);
             req.setAttribute("dirList", dateDirect);
             req.setAttribute("notDirList", dateNotDirect);
         }
         if (!beg.equals("") && !pClass.equals("")){
-            //TODO: Методы с учетом даты и класса
+            List<Plane> typeDateDirect = getTypeDateDirect(from, to, pClass, beg);
+            List<NotDirectRoutesOutputHelper> typeDateNotDirect = getTypeDateNotDirect(from, to, pClass, beg);
+            req.setAttribute("dirList", typeDateDirect);
+            req.setAttribute("notDirList", typeDateNotDirect);
         }
         if (beg.equals("") && pClass.equals("")){
             List<Plane> direct = getDirect(from,to);
             List<NotDirectRoutesOutputHelper> notDirect = getNotDirect(from,to);
-            log.info("DIR: " + direct);
-            log.info("NOTDIR: " + notDirect);
             req.setAttribute("dirList", direct);
             req.setAttribute("notDirList", notDirect);
         }

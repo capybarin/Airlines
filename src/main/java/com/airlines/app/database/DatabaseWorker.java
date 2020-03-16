@@ -424,4 +424,77 @@ public class DatabaseWorker {
         }
         return planes;
     }
+
+    /**
+     * @param from
+     * @param to
+     * @param type
+     * @param date
+     * @return возвращает все самолеты с заданой точкой вылета, назначения, датой и типом
+     */
+    public ArrayList<Plane> getPlanesTypeDateFromTo(String from, String to, String type, String date){
+        String sql ="SELECT * FROM plane WHERE plane.From = '"+ from +"' AND plane.To = '" + to + "' " +
+                "AND plane.Type = '" + type + "' AND plane.Date = '" + date + "'";
+        ArrayList<Plane> planes = new ArrayList<>();
+        try{
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()){
+                planes.add(new Plane(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                        resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),
+                        resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),
+                        resultSet.getString(10)));
+            }
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return planes;
+    }
+
+    /**
+     * @param dep
+     * @param type
+     * @param date
+     * @return возвращает все самолеты с заданой точкой вылета, датой и типом
+     */
+    public ArrayList<Plane> getPlaneByTypeDateDeparture(String dep, String type, String date){
+        String sql = "SELECT * FROM plane WHERE plane.From = '" + dep + "'" +
+                " AND plane.Type = '" + type + "' AND plane.Date = '" + date + "'";
+        ArrayList<Plane> planes = new ArrayList<>();
+        try {
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()){
+                planes.add(new Plane(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                        resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),
+                        resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),
+                        resultSet.getString(10)));
+            }
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return planes;
+    }
+
+    /**
+     * @param dest
+     * @param type
+     * @param date
+     * @return возвращает все самолеты с заданой точкой назначения, датой и типом
+     */
+    public ArrayList<Plane> getPlaneByTypeDateDestination(String dest, String type, String date){
+        String sql = "SELECT * FROM plane WHERE plane.To = '" + dest + "'" +
+                " AND plane.Type = '" + type + "' AND plane.Date = '" + date + "'";
+        ArrayList<Plane> planes = new ArrayList<>();
+        try {
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()){
+                planes.add(new Plane(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                        resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),
+                        resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),
+                        resultSet.getString(10)));
+            }
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return planes;
+    }
 }
