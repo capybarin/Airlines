@@ -354,4 +354,74 @@ public class DatabaseWorker {
         }
         return planes;
     }
+
+    /**
+     * @param from
+     * @param to
+     * @param type
+     * @return возвращает все перелты по точке прибытия, отправки и типу самолета
+     */
+    public ArrayList<Plane> getPlanesTypeFromTo(String from, String to, String type){
+        String sql = "SELECT * FROM plane WHERE plane.From = '" + from + "' AND plane.TO = '" + to + "'" +
+                " AND plane.Type = '" + type + "'";
+        ArrayList<Plane> planes = new ArrayList<>();
+        try{
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()){
+                planes.add(new Plane(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                        resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),
+                        resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),
+                        resultSet.getString(10)));
+            }
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return planes;
+    }
+
+    /**
+     * @param dest
+     * @param type
+     * @return возвращает все перелты по точке прибытия и типу самолета
+     */
+    public ArrayList<Plane> getPlaneByTypeDestination(String dest, String type){
+        String sql = "SELECT * FROM plane WHERE plane.To = '" + dest + "'" +
+        " AND plane.Type = '" + type + "'";
+        ArrayList<Plane> planes = new ArrayList<>();
+        try {
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()){
+                planes.add(new Plane(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                        resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),
+                        resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),
+                        resultSet.getString(10)));
+            }
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return planes;
+    }
+
+    /**
+     * @param dep
+     * @param type
+     * @return возвращает все перелты по точке отправки и типу самолета
+     */
+    public ArrayList<Plane> getPlaneByTypeDeparture(String dep, String type){
+        String sql = "SELECT * FROM plane WHERE plane.From = '" + dep + "'" +
+                " AND plane.Type = '" + type + "'";
+        ArrayList<Plane> planes = new ArrayList<>();
+        try {
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while (resultSet.next()){
+                planes.add(new Plane(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                        resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),
+                        resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),
+                        resultSet.getString(10)));
+            }
+        } catch (SQLException e) {
+            log.error(e);
+        }
+        return planes;
+    }
 }
