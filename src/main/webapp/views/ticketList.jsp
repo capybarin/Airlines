@@ -14,45 +14,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Билеты</title>
-
+  
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRB9HFweS0fmrAKtV5kY6-cmKy_SicZQXe_18RH_NvEQ0EsrDaf">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
+  
 </head>
 <body>
 
 <header>
-
-    <div class="nav_b1"></div>
-    <div class="nav_b2"></div>
-
-    <nav>
-
-        <h1>Airlines Application</h1>
-
-        <p class="nav_text_1"><a href="/" class="a_white">Главная</a></p>
-
-    </nav>
-
+        <p class="nav_text_3"><a href="/" class="a_white">Главная</a></p>
 </header>
 
-<div class="content">
+<div class="content list_ticket ticket_style_1">
 
-    <h2>Список билетов:</h2>
+    <h3>Список билетов:</h3>
 
     <c:forEach items="${tickets}" var="ticket">
         <section>
-            <p>Вылет: ${ticket.dateOfBeg}. Прибытие: ${ticket.dateOfEnd}</p>
-            <p>Терминал: ${ticket.terminal}.</p>
-            <p>Выход: ${ticket.gate}.</p>
-            <p>Самолет: ${ticket.planeName}.</p>
-            <p>Класс: ${ticket.planeType}.</p>
-            <p>Билет на имя: ${ticket.userName} ${ticket.userSurname}.</p>
+          
+          <div class="section_1">
+            <h1 class="in_section">Airlines Application</h1>
+            <div class="head_line"><div class="line"></div></div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRB9HFweS0fmrAKtV5kY6-cmKy_SicZQXe_18RH_NvEQ0EsrDaf" class="img_headline">
+          </div>
+          
+          <div class="section_1">
+            <div class="section_2">
+              
+              <p>Вылет: ${ticket.dateOfBeg}. Прибытие: ${ticket.dateOfEnd}</p>
+              <p>Терминал: ${ticket.terminal}.</p>
+              <p>Выход: ${ticket.gate}.</p>
+              <p>Самолет: ${ticket.planeName}.</p>
+              <p>Класс: ${ticket.planeType}.</p>
+              <p>Билет на имя: ${ticket.userName} ${ticket.userSurname}.</p>
+              
+            </div>
+            
+            <p class="p_img_code">
+              <img src="https://ru.seaicons.com/wp-content/uploads/2015/10/Bar-Code-icon.png" class="img_code">
+            </p>
+            
+          </div>
+          
         </section>
     </c:forEach>
 
 </div>
 
-<footer>
+<footer class="ticket_style_2">
     <p class="footer_text">Курсова робота Бездушного Владислава</p>
 </footer>
 
