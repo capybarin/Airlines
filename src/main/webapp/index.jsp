@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Airlines</title>
+    
     <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRB9HFweS0fmrAKtV5kY6-cmKy_SicZQXe_18RH_NvEQ0EsrDaf">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
+    
 </head>
 <body>
 <header>
     <nav>
-        <h1>Airlines Application</h1>
+        <h1 class="app_name">Airlines Application</h1>
         <%
             if(request.getAttribute("isLoggedIn") != null){
                 out.println("<p class=\"nav_text_1\"><a href=\"/tickets\" class=\"a_white\">Список билетов</a></p>");
@@ -27,11 +29,11 @@
 <div class="home_img_big">
     <div class="home_text">
         <h2 class="text_shadow">В полет без забот</h2>
-        <div class="enter_buttons">
+        <div class="p_white">
             <%
                 if(request.getAttribute("isLoggedIn") == null){
-                    out.println("<button class=\"button_log shadow\" onclick=\"location.href='/signup'\">Регистрация</button>");
-                    out.println("<button class=\"button_log shadow\" onclick=\"location.href='/login'\">Вход</button>");
+                    out.println("<button class=\"button_log button_main shadow\" onclick=\"location.href='/signup'\">Регистрация</button>");
+                    out.println("<button class=\"button_log button_main shadow\" onclick=\"location.href='/login'\">Вход</button>");
                 }
             %>
             <%
@@ -45,9 +47,11 @@
 
 
 <div class="content">
+    
     <h3>Поиск билетов</h3>
+    
     <div class="top_search">
-        <div>
+        <div class="in_top_search">
             <form method="post">
 
                 <p>Откуда - Куда</p>
@@ -94,6 +98,7 @@
     <p class="footer_text">Курсова робота Бездушного Владислава</p>
 </footer>
 
-<script type="text/javascript" src='dateScript.js'></script>
+    <script type="text/javascript" src='dateScript.js'></script>
+    
 </body>
 </html>
