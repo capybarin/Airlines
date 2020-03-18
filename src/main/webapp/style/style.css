@@ -234,7 +234,10 @@ input:-webkit-autofill {
 /*reg f*/
 
 /*ticket s*/
-.list_ticket {padding-top: 80px;}
+.list_ticket {
+    padding-top: 80px;
+    min-height: calc(100vh - 153px);
+}
 .ticket_style_1 {min-width: 750px}
 .ticket_style_2 {min-width: 770px}
 
