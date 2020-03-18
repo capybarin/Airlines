@@ -47,10 +47,11 @@
                 
               </div>
               
-                <button class="button_log button_back shadow" onclick="location.href='/'">Назад</button>
+
                 <button type="submit" class="search_button shadow button_enter">Подтвердить</button>
               
             </form>
+      <button class="button_log button_back shadow" onclick="location.href='/'">Назад</button>
 
   </div>
 

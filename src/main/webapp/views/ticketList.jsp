@@ -44,7 +44,7 @@
               
               <p>Вылет: ${ticket.dateOfBeg}. Прибытие: ${ticket.dateOfEnd}</p>
               <p>Терминал: ${ticket.terminal}.</p>
-              <p>Выход: ${ticket.gate}.</p>
+              <p>Ворота: ${ticket.gate}.</p>
               <p>Самолет: ${ticket.planeName}.</p>
               <p>Класс: ${ticket.planeType}.</p>
               <p>Билет на имя: ${ticket.userName} ${ticket.userSurname}.</p>

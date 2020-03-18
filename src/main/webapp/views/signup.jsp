@@ -69,8 +69,6 @@
             </form>
 
     </div>
-  
-  <script type="text/javascript" src='validationPassword.js'></script>
-
+  <script type="text/javascript" src='../js/validationPassword.js'></script>
 </body>
 </html>
