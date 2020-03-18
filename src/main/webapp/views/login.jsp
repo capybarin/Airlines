@@ -14,19 +14,18 @@
 
     <title>Вход</title>
 
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRB9HFweS0fmrAKtV5kY6-cmKy_SicZQXe_18RH_NvEQ0EsrDaf">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
 
-
 </head>
-<body>
+<body class="body_full">
 
-<header>
-    <h1>Airlines Application</h1>
-</header>
+  <header>
+      <h1 class="head_login">Airlines Application</h1>
+  </header>
 
-<div class="home_img_big">
-    <div class="home_text">
+  <div class="log_text">
         <div>
             <h2 class="text_shadow">Вход</h2>
         </div>
@@ -35,22 +34,25 @@
                 out.println("<h2 class=\"text_shadow\">"+request.getAttribute("error")+"</h2>");
             }
         %>
-        <div class="log_block">
-            <form method="post" class="">
+        
+            <form method="post">
+              
+              <div class="log_block">
+                
                 <p class="text_shadow">Логин:</p>
-                <input type="text" name="name" class="input_text">
+                <input type="text" name="name" class="input_text shadow">
 
                 <p class="text_shadow">Пароль:</p>
-                <input type="password" name="pass" class="input_text"><br>
-
-                <button type="submit" class="button_enter">Подтвердить</button>
+                <input type="password" name="pass" class="input_text shadow"><br>
+                
+              </div>
+              
+                <button class="button_log button_back shadow" onclick="location.href='/'">Назад</button>
+                <button type="submit" class="search_button shadow button_enter">Подтвердить</button>
+              
             </form>
-        </div>
 
-        <button class="button_back" onclick="location.href='/'">Назад</button>
-
-    </div>
-</div>
+  </div>
 
 </body>
 </html>
