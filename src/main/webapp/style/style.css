@@ -298,14 +298,38 @@ section {
 /*ticket f*/
 
 /*routes s*/
-.block_rout {
-    width: 500px;
-    margin: 20px auto;
+main {
+    display: grid;
+    grid-template-areas: 
+    "t_compa t_plane t_class t_depar t_f_rou t_t_rou t_seats t_price"
+    "c_compa c_plane c_class c_depar c_f_rou c_t_rou c_seats c_price";
 }
 
-.routes {
-    display: flex;
-    flex-direction: column;
+.t_compa,.t_plane,.t_class,.t_depar,.t_f_rou,.t_t_rou,.t_seats,.t_price {
+    border-top: 1px solid #363636;
+    border-right: 1px solid #363636;
+    border-bottom: 1px solid #363636;
+    padding: 3px;
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 2px rgba(0, 0, 0, 0.03);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 2px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 2px rgba(0, 0, 0, 0.03);
+}
+
+.t_compa,.c_compa {border-left: 1px solid #363636;}
+
+.c_compa,.c_plane,.c_class,.c_depar,.c_f_rou,.c_t_rou,.c_seats,.c_price {
+    border-bottom: 1px solid #363636;
+    border-right: 1px solid #363636;
+    padding: 3px;
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 2px rgba(0, 0, 0, 0.03);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 2px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 2px rgba(0, 0, 0, 0.03);
+}
+
+.block_rout {
+    padding: 80px 20px;
+    max-width: 1300px;
+    margin:0 auto;
 }
 /*routes f*/
 
