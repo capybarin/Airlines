@@ -24,36 +24,67 @@
 <body>
   
   <header>
-    <h1 class="head_login">Airlines Application</h1>
+    <p class="nav_text_3"><a href="/" class="a_white">Главная</a></p>
   </header>
   
-  <div class="content list_ticket routes">
+  <div class="block_rout">
     
-    <div class="block_rout">
         <c:if test="${not empty dirList}">
+          
             <p class="name_routes">Прямые перелеты:</p>
-            <c:forEach items="${dirList}" var="dir">
-              <p>Авиакомпания: ${dir.company}</p>
-              <p>Воздушное судно: ${dir.name}</p>
-              <p>Вылет: ${dir.date} Класс: ${dir.type}</p>
-              <p>Маршрут: ${dir.from} --> ${dir.to}</p>
-              <p>Цена: ${dir.price}; Посдаочных мест: ${dir.seats}</p>
-            </c:forEach>
+          
+            <main>
+              
+               <div class="t_compa">Авиакомпания</div>
+               <div class="t_plane">Воздушное судно</div>
+               <div class="t_class">Класс</div>
+               <div class="t_depar">Дата</div>
+               <div class="t_f_rou">Вылет</div>
+               <div class="t_t_rou">Прибытие</div>
+               <div class="t_seats">Посадочные места</div>
+               <div class="t_price">Цена</div>
+          
+              <c:forEach items="${dirList}" var="dir">
+                  <div class="c_compa">${dir.company}</div>
+                  <div class="c_plane">${dir.name}</div>
+                  <div class="c_class">${dir.type}</div>
+                  <div class="c_depar">${dir.date}</div>
+                  <div class="c_f_rou">${dir.from}</div>
+                  <div class="c_t_rou">${dir.to}</div>
+                  <div class="c_seats">${dir.seats}</div>
+                  <div class="c_price">${dir.price}</div>
+              </c:forEach>
+              
+             </main>
         </c:if>
-    </div>
 
-    <div class="block_rout">
         <c:if test="${not empty notDirList}">
+          
             <p class="name_routes">Непрямые перелеты:</p>
-            <c:forEach items="${notDirList}" var="ndir">
-              <p>Авиакомпания: ${ndir.company}</p>
-              <p>Воздушное судно: ${ndir.name}</p>
-              <p>Вылет: ${ndir.date} Класс: ${ndir.type}</p>
-              <p>Маршрут: ${ndir.from} --> ${ndir.tmpLoc} --> ${ndir.to}</p>
-              <p>Цена: ${ndir.price}</p>
-            </c:forEach>
+          
+            <main>
+                <div class="t_compa">Авиакомпания</div>
+                <div class="t_plane">Воздушное судно</div>
+                <div class="t_class">Класс</div>
+                <div class="t_depar">Дата</div>
+                <div class="t_f_rou">Вылет</div>
+                <div class="t_t_rou">Посадка</div>
+                <div class="t_seats">Прибытие</div>
+                <div class="t_price">Цена</div>
+              
+                <c:forEach items="${notDirList}" var="ndir">
+                    <div class="c_compa">${ndir.company}</div>
+                    <div class="c_plane">${ndir.name}</div>
+                    <div class="c_class">${ndir.type}</div>
+                    <div class="c_depar">${ndir.date}</div>
+                    <div class="c_f_rou">${ndir.from}</div>
+                    <div class="c_t_rou">${ndir.tmpLoc}</div>
+                    <div class="c_seats">${ndir.to}</div>
+                    <div class="c_price">${ndir.price}</div>
+                </c:forEach>
+              
+             </main>
         </c:if>
-    </div>
     
   </div>
 </body>
