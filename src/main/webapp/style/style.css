@@ -297,6 +297,23 @@ section {
 }
 /*ticket f*/
 
+/*routes s*/
+.block_rout {
+    width: 500px;
+    margin: 20px auto;
+}
+
+.routes {
+    display: flex;
+    flex-direction: column;
+}
+/*routes f*/
+
+/*error s*/
+.img_error {height: 26vh;}
+.name_routes {font-size: 28px;}
+/*error f*/
+
 @media (min-width: 1740px) {
     
     .home_img_big {height: 650px;}
