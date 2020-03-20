@@ -52,7 +52,7 @@
                   <div class="c_f_rou">${dir.from}</div>
                   <div class="c_t_rou">${dir.to}</div>
                   <div class="c_seats">${dir.seats}</div>
-                  <div class="c_price">${dir.price}</div>
+                  <div class="c_price">${dir.price} грн.</div>
               </c:forEach>
               
              </main>
@@ -80,7 +80,7 @@
                     <div class="c_f_rou">${ndir.from}</div>
                     <div class="c_t_rou">${ndir.tmpLoc}</div>
                     <div class="c_seats">${ndir.to}</div>
-                    <div class="c_price">${ndir.price}</div>
+                    <div class="c_price">${ndir.price} грн.</div>
                 </c:forEach>
               
              </main>
