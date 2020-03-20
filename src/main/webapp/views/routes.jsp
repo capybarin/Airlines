@@ -9,42 +9,52 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+  
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Plane, Ticket">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Маршруты</title>
+  
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRB9HFweS0fmrAKtV5kY6-cmKy_SicZQXe_18RH_NvEQ0EsrDaf">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
+  
 </head>
 <body>
-<div>
-    <c:if test="${not empty dirList}">
-        Прямые перелеты:
-        <c:forEach items="${dirList}" var="dir">
-            <ul>
-                <li>
-                    <h5>Авиакомпания: ${dir.company}</h5>
-                    <h5>Воздушное судно: ${dir.name}</h5>
-                    <h5>Вылет: ${dir.date} Класс: ${dir.type}</h5>
-                    <h5>Маршрут: ${dir.from} --> ${dir.to}</h5>
-                    <h5>Цена: ${dir.price}; Посдаочных мест: ${dir.seats}</h5>
-                </li>
-            </ul>
-        </c:forEach>
-    </c:if>
-</div>
+  
+  <header>
+    <h1 class="head_login">Airlines Application</h1>
+  </header>
+  
+  <div class="content list_ticket routes">
+    
+    <div class="block_rout">
+        <c:if test="${not empty dirList}">
+            <p class="name_routes">Прямые перелеты:</p>
+            <c:forEach items="${dirList}" var="dir">
+              <p>Авиакомпания: ${dir.company}</p>
+              <p>Воздушное судно: ${dir.name}</p>
+              <p>Вылет: ${dir.date} Класс: ${dir.type}</p>
+              <p>Маршрут: ${dir.from} --> ${dir.to}</p>
+              <p>Цена: ${dir.price}; Посдаочных мест: ${dir.seats}</p>
+            </c:forEach>
+        </c:if>
+    </div>
 
-<div>
-    <c:if test="${not empty notDirList}">
-        Непрямые перелеты:
-        <c:forEach items="${notDirList}" var="ndir">
-            <ul>
-                <li>
-                    <h5>Авиакомпания: ${ndir.company}</h5>
-                    <h5>Воздушное судно: ${ndir.name}</h5>
-                    <h5>Вылет: ${ndir.date} Класс: ${ndir.type}</h5>
-                    <h5>Маршрут: ${ndir.from} --> ${ndir.tmpLoc} --> ${ndir.to}</h5>
-                    <h5>Цена: ${ndir.price}</h5>
-                </li>
-            </ul>
-        </c:forEach>
-    </c:if>
-</div>
+    <div class="block_rout">
+        <c:if test="${not empty notDirList}">
+            <p class="name_routes">Непрямые перелеты:</p>
+            <c:forEach items="${notDirList}" var="ndir">
+              <p>Авиакомпания: ${ndir.company}</p>
+              <p>Воздушное судно: ${ndir.name}</p>
+              <p>Вылет: ${ndir.date} Класс: ${ndir.type}</p>
+              <p>Маршрут: ${ndir.from} --> ${ndir.tmpLoc} --> ${ndir.to}</p>
+              <p>Цена: ${ndir.price}</p>
+            </c:forEach>
+        </c:if>
+    </div>
+    
+  </div>
 </body>
 </html>
