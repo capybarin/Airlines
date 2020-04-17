@@ -68,7 +68,7 @@
                 <div class="t_class">Класс</div>
                 <div class="t_depar">Дата</div>
                 <div class="t_f_rou">Вылет</div>
-                <div class="t_t_rou">Посадка</div>
+                <div class="t_t_rou">Пересадка</div>
                 <div class="t_seats">Прибытие</div>
                 <div class="t_price">Цена</div>
               
