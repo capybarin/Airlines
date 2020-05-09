@@ -59,10 +59,9 @@ public class DatabaseWorker {
      * Используется при регистрации
      * @param user
      */
-    public void addUser(User user){
+    public void addUser(User user) throws SQLException {
         log.info("Creating a user");
         PreparedStatement preparedStatement = null;
-        try {
             preparedStatement = connection.prepareStatement("insert into user (Login, Password, Name, Surname, Mail) values(?,?,?,?,?)");
             preparedStatement.setString(1,user.getLogin());
             preparedStatement.setString(2, user.getPassword());
@@ -70,9 +69,7 @@ public class DatabaseWorker {
             preparedStatement.setString(4, user.getSurname());
             preparedStatement.setString(5, user.getMail());
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
-            log.error(e);
-        }
+
     }
 
     /**

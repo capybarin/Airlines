@@ -41,22 +41,6 @@ public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BasicConfigurator.configure();
         req.setCharacterEncoding("UTF-8");
-        /*String planeId = req.getParameter("id");
-        log.info(planeId);
-        HttpSession session = req.getSession();
-        if (session.getAttribute("currOnline") == null)
-        {
-            ServletContext servletContext = getServletContext();
-            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/errors/notLoggedError.jsp");
-            requestDispatcher.forward(req, resp);
-            return;
-        }*/
-        /*DatabaseWorker databaseWorker = null;
-        try {
-            databaseWorker = DatabaseWorker.getInstance();
-        } catch (SQLException e) {
-            log.error(e);
-        }*/
         String from = req.getParameter("from");
         String to = req.getParameter("destination");
         String beg = req.getParameter("dateOfBeg");

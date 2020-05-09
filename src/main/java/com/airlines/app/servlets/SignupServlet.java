@@ -41,35 +41,16 @@ public class SignupServlet extends HttpServlet {
         String mail = req.getParameter("mail");
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
-        if (!login.equals("")){
-            if (!password.equals("")){
-                    if (!name.equals("")){
-                        if (!surname.equals("")){
-                            if (!mail.equals("")){
-                                if(validator.validate(mail)){
-                                   log.info("mail is valid");
-                                    try {
-                                        User user = new User(login,password,name,surname,mail);
-                                        DatabaseWorker databaseWorker = DatabaseWorker.getInstance();
-                                        databaseWorker.addUser(user);
-                                    } catch (SQLException e) {
-                                        log.error(e);
-                                    }
-                                }
-                            }else {
-                                req.setAttribute("error", "Введите почту");
-                            }
-                        }else {
-                            req.setAttribute("error", "Введите фамилию");
-                        }
-                    }else {
-                        req.setAttribute("error", "Введите имя");
-                    }
-            }else {
-                req.setAttribute("error", "Введите пароль");
+        if(validator.validate(mail)){
+            log.info("mail is valid");
+            try {
+                User user = new User(login,password,name,surname,mail);
+                DatabaseWorker databaseWorker = DatabaseWorker.getInstance();
+                databaseWorker.addUser(user);
+            } catch (SQLException e) {
+                log.error(e);
+                req.setAttribute("error", "Такой пользователь уже зарегистрирован");
             }
-        }else {
-            req.setAttribute("error", "Введите логин");
         }
         req.setAttribute("userLogin", login);
         req.setAttribute("userPass", password);
